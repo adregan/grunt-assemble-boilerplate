@@ -4,7 +4,7 @@ module.exports = function(grunt){
 
       watch: {
         html: {
-          files: ['./src/docs/**/*'],
+          files: ['./src/pages/**/*'],
           tasks: ['html']
         },
         js: {
@@ -96,13 +96,13 @@ module.exports = function(grunt){
 
       assemble: {
         options: {
-          layout: './src/docs/layout/default.hbs',
-          partials: './src/docs/partials/**/*.hbs',
-          data: './src/docs/data/**/*.{json,yml}',
+          layout: './src/pages/layout/default.hbs',
+          partials: './src/pages/partials/**/*.hbs',
+          data: './src/pages/content/**/*.{json,yml}',
           flatten: true
         },
         pages: {
-          src: './src/docs/*.hbs',
+          src: './src/pages/*.hbs',
           dest: './dist/'
         }
       },
