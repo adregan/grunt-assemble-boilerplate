@@ -1,1 +1,19 @@
-body{background-color:pink}
+body {
+  background-color: lightcoral;
+}
+
+body p {
+  color: blue;
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  padding: 1em;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.9);
+}

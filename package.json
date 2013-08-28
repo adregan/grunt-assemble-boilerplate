@@ -18,6 +18,9 @@
     "grunt-contrib-imagemin": "~0.2.0",
     "grunt-contrib-connect": "~0.3.0",
     "assemble": "~0.4.4",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-autoprefixer": "~0.2.20130806",
+    "grunt-sass": "~0.6.1",
+    "grunt-contrib-cssmin": "~0.6.1"
   }
 }
