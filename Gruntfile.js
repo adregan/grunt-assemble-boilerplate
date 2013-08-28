@@ -4,7 +4,7 @@ module.exports = function(grunt){
 
       watch: {
         html: {
-          files: ['./src/*.html'],
+          files: ['./src/docs/**/*'],
           tasks: ['html']
         },
         js: {
@@ -13,7 +13,7 @@ module.exports = function(grunt){
         },
         sass: {
           files: ['./src/sass/**/*.scss'],
-          tasks: ['sass']
+          tasks: ['style']
         },
         css: {
           files: ['./dist/styles/*.css']
@@ -62,13 +62,34 @@ module.exports = function(grunt){
           }
         }
       },
-        
-      compass: {
+          
+      sass: {                                 
+        dist: {                             
+            files: {                        
+                './dist/styles/main.css': './src/sass/main.scss'
+            }
+        }
+      },
+
+      autoprefixer: {
         dist: {
           options: {
-            sassDir: './src/sass',
-            cssDir: './dist/styles',
-            config: 'config.rb'
+            browsers: ['last 2 versions', '> 1%']
+          },
+          files: {
+            './dist/styles/main.css' : './dist/styles/main.css'
+          }
+        }
+      },
+
+      cssmin: {
+        add_banner: {
+          options: {
+          banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+          report: 'gzip'
+          },
+          files: {
+            './dist/styles/main.min.css' : './dist/styles/main.css'
           }
         }
       },
@@ -118,7 +139,6 @@ module.exports = function(grunt){
 
   });
 
-  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -127,15 +147,18 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.registerTask('html', ['assemble', 'htmlmin']);
 
   grunt.registerTask('js', ['jshint', 'concat', 'uglify']);
 
-  grunt.registerTask('sass', ['compass']);
+  grunt.registerTask('style', ['sass', 'autoprefixer', 'cssmin']);
 
   grunt.registerTask('serve', [ 'default', 'connect', 'watch']);
 
-  grunt.registerTask('default', ['js', 'sass', 'clean', 'html']);
+  grunt.registerTask('default', ['js', 'style', 'clean', 'html']);
 
 };
