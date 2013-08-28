@@ -4,7 +4,7 @@ module.exports = function(grunt){
 
       watch: {
         html: {
-          files: ['./src/*.html'],
+          files: ['./src/docs/**/*'],
           tasks: ['html']
         },
         js: {
