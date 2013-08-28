@@ -1,4 +1,5 @@
 # A Simple Grunt + Assemble boilerplate
+0.7.0
 
 This is a simple boilerplate I cooked up for static site projects. It's nothing too fancy, but it uses [Grunt](http://gruntjs.com/) and [Assemble](http://assemble.io/). 
 
@@ -21,7 +22,7 @@ Some commands:
 - `grunt html` will package up your site templates and minify
 - `grunt clean` will delete all of the HTML files in "./dist"
 - `grunt style` will convert your SASS, autoprefix, and minify your CSS 
-- `grunt js` will lint, concat, and uglify your JS.
+- `grunt js` will lint, concatenate, and uglify your JS.
 
 Make sure to update the info in the `package.json` file with your site's name, your name, etc. 
 
