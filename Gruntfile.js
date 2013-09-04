@@ -157,7 +157,6 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-markdown-to-json');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('html', ['assemble', 'htmlmin']);
@@ -168,7 +167,7 @@ module.exports = function(grunt){
 
   grunt.registerTask('serve', [ 'default', 'connect', 'watch']);
 
-  grunt.registerTask('publish', ['default','gh-pages']);
+  grunt.registerTask('pub', ['default','gh-pages']);
 
   grunt.registerTask('default', ['js', 'style', 'clean', 'html']);
 
