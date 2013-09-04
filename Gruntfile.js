@@ -98,7 +98,7 @@ module.exports = function(grunt){
         options: {
           layout: './src/pages/layout/default.hbs',
           partials: './src/pages/partials/**/*.hbs',
-          data: './src/pages/content/**/*.{json,yml}',
+          data: './src/pages/json/**/*.{json,yml}',
           flatten: true
         },
         pages: {
@@ -135,6 +135,13 @@ module.exports = function(grunt){
     
       clean: {
         all: ['./dist/*.html']
+      },
+
+      'gh-pages': {
+        options: {
+          base: 'dist'
+        },
+        src: ['**']
       }
 
   });
@@ -150,6 +157,8 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-markdown-to-json');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('html', ['assemble', 'htmlmin']);
 
@@ -158,6 +167,8 @@ module.exports = function(grunt){
   grunt.registerTask('style', ['sass', 'autoprefixer', 'cssmin']);
 
   grunt.registerTask('serve', [ 'default', 'connect', 'watch']);
+
+  grunt.registerTask('publish', ['default','gh-pages']);
 
   grunt.registerTask('default', ['js', 'style', 'clean', 'html']);
 
